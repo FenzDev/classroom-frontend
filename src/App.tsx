@@ -15,16 +15,20 @@ import routerProvider, {
   DocumentTitleHandler,
 } from "@refinedev/react-router";
 import { dataProvider } from "./providers/data";
-import { Login } from "./pages/login";
-import { Register } from "./pages/register";
-import { ForgotPassword } from "./pages/forgot-password";
-import { ErrorComponent } from "./components/refine-ui/layout/error-component";
+// import { Login } from "./pages/login";
+// import { Register } from "./pages/register";
+// import { ForgotPassword } from "./pages/forgot-password";
+// import { ErrorComponent } from "./components/refine-ui/layout/error-component";
 import { Layout } from "./components/refine-ui/layout/layout";
 import { Header } from "./components/refine-ui/layout/header";
 import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider";
 import { Toaster } from "./components/refine-ui/notification/toaster";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import "./App.css";
+import Dashboard from "./pages/dashboard";
+import { BookOpen, Home } from "lucide-react";
+import SubjectsList from "./pages/subjects/list";
+import SubjectsCreate from "./pages/subjects/create";
 
 function App() {
   return (
@@ -42,9 +46,39 @@ function App() {
                 warnWhenUnsavedChanges: true,
                 projectId: "baUDuH-tkrpet-Ujn4pi",
               }}
+              resources={[
+                {
+                  name: "dashboard",
+                  list: "/",
+                  meta: {
+                    label: "Home",
+                    icon: <Home />,
+                  },
+                },
+                {
+                  name: "subjects",
+                  list: "/subjects",
+                  meta: {
+                    label: "Subjects",
+                    icon: <BookOpen />,
+                  },
+                },
+              ]}
             >
               <Routes>
-                <Route index element={<WelcomePage />} />
+                <Route
+                  element={
+                    <Layout>
+                      <Outlet />
+                    </Layout>
+                  }
+                >
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/subjects">
+                    <Route index element={<SubjectsList />} />
+                    <Route path="create" element={<SubjectsCreate />} />
+                  </Route>
+                </Route>
               </Routes>
               <Toaster />
               <RefineKbar />

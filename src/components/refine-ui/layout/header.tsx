@@ -37,7 +37,7 @@ function DesktopHeader() {
         "bg-sidebar",
         "pr-3",
         "justify-end",
-        "z-40"
+        "z-40",
       )}
     >
       <ThemeToggle />
@@ -66,7 +66,7 @@ function MobileHeader() {
         "bg-sidebar",
         "pr-3",
         "justify-between",
-        "z-40"
+        "z-40",
       )}
     >
       <SidebarTrigger
@@ -92,7 +92,7 @@ function MobileHeader() {
           {
             "pl-3": !open,
             "pl-5": open,
-          }
+          },
         )}
       >
         <div>{title.icon}</div>
@@ -105,7 +105,7 @@ function MobileHeader() {
             {
               "opacity-0": !open,
               "opacity-100": open,
-            }
+            },
           )}
         >
           {title.text}

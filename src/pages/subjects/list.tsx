@@ -27,7 +27,7 @@ const SubjectsList = () => {
       ? []
       : [
           {
-            field: "departement",
+            field: "department",
             operator: "eq" as const,
             value: selectedDepartment,
           },
@@ -105,7 +105,7 @@ const SubjectsList = () => {
             <Input
               type="search"
               className="pl-10 w-full"
-              placeholder="Search by name.."
+              placeholder="Search by name..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -117,7 +117,7 @@ const SubjectsList = () => {
               onValueChange={setSelectedDepartment}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Filter By department.." />
+                <SelectValue placeholder="Filter By department..." />
               </SelectTrigger>
 
               <SelectContent> 

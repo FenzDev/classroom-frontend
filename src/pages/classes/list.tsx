@@ -18,7 +18,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "@/components/refine-ui/data-table/data-table";
 import { Badge } from "@/components/ui/badge";
 import { CrudFilter } from "@refinedev/core";
-const SubjectsList = () => {
+
+const ClassesList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("all");
 
@@ -148,4 +149,4 @@ const SubjectsList = () => {
   );
 };
 
-export default SubjectsList;
+export default ClassesList;

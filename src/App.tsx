@@ -26,9 +26,11 @@ import { Toaster } from "./components/refine-ui/notification/toaster";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import "./App.css";
 import Dashboard from "./pages/dashboard";
-import { BookOpen, Home } from "lucide-react";
+import { BookOpen, GraduationCap, Home, Lectern } from "lucide-react";
 import SubjectsList from "./pages/subjects/list";
 import SubjectsCreate from "./pages/subjects/create";
+import ClassesList from "./pages/classes/list";
+import ClassesCreate from "./pages/classes/create";
 
 function App() {
   return (
@@ -36,57 +38,68 @@ function App() {
       <GitHubBanner />
       <RefineKbarProvider>
         <ThemeProvider>
-          <DevtoolsProvider>
-            <Refine
-              dataProvider={dataProvider}
-              notificationProvider={useNotificationProvider()}
-              routerProvider={routerProvider}
-              options={{
-                syncWithLocation: true,
-                warnWhenUnsavedChanges: true,
-                projectId: "baUDuH-tkrpet-Ujn4pi",
-              }}
-              resources={[
-                {
-                  name: "dashboard",
-                  list: "/",
-                  meta: {
-                    label: "Home",
-                    icon: <Home />,
-                  },
+          <Refine
+            dataProvider={dataProvider}
+            notificationProvider={useNotificationProvider()}
+            routerProvider={routerProvider}
+            options={{
+              syncWithLocation: true,
+              warnWhenUnsavedChanges: true,
+              projectId: "baUDuH-tkrpet-Ujn4pi",
+            }}
+            resources={[
+              {
+                name: "dashboard",
+                list: "/",
+                meta: {
+                  label: "Home",
+                  icon: <Home />,
                 },
-                {
-                  name: "subjects",
-                  list: "/subjects",
-                  meta: {
-                    label: "Subjects",
-                    icon: <BookOpen />,
-                  },
+              },
+              {
+                name: "subjects",
+                list: "/subjects",
+                create: "/subjects/create",
+                meta: {
+                  label: "Subjects",
+                  icon: <BookOpen />,
                 },
-              ]}
-            >
-              <Routes>
-                <Route
-                  element={
-                    <Layout>
-                      <Outlet />
-                    </Layout>
-                  }
-                >
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/subjects">
-                    <Route index element={<SubjectsList />} />
-                    <Route path="create" element={<SubjectsCreate />} />
-                  </Route>
+              },
+              {
+                name: "classes",
+                list: "/classes",
+                create: "/classes/create",
+                meta: {
+                  label: "Classes",
+                  icon: <GraduationCap />,
+                },
+              },
+            ]}
+          >
+            <Routes>
+              <Route
+                element={
+                  <Layout>
+                    <Outlet />
+                  </Layout>
+                }
+              >
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/subjects">
+                  <Route index element={<SubjectsList />} />
+                  <Route path="create" element={<SubjectsCreate />} />
                 </Route>
-              </Routes>
-              <Toaster />
-              <RefineKbar />
-              <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
-            </Refine>
-            <DevtoolsPanel />
-          </DevtoolsProvider>
+                <Route path="/classes">
+                  <Route index element={<ClassesList />} />
+                  <Route path="create" element={<ClassesCreate />} />
+                </Route>
+              </Route>
+            </Routes>
+            <Toaster />
+            <RefineKbar />
+            <UnsavedChangesNotifier />
+            <DocumentTitleHandler />
+          </Refine>
         </ThemeProvider>
       </RefineKbarProvider>
     </BrowserRouter>

@@ -102,7 +102,7 @@ const SubjectsList = () => {
   });
 
   return (
-    <ListView>
+    <ListView >
       <Breadcrumb />
 
       <h1 className="page-title">Subjects</h1>

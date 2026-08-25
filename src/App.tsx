@@ -4,7 +4,6 @@ import {
   WelcomePage,
   Authenticated,
 } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import { BrowserRouter, Route, Routes, Outlet } from "react-router";
